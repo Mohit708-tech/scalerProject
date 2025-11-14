@@ -48,6 +48,7 @@ exports.createEvent = async (req, res) => {
 
 // add meetingLinks and remove description
 exports.updateEvent = async (req, res) => {
+	console.log("object")
 	if (req.user?.parent) {
 		return res.status(400).json({ error: "Access denied" })
 	}
@@ -93,8 +94,8 @@ exports.getAllEvents = async (req, res) => {
 
         // Correct user ID access
         console.log("dwubhbd", req.user?._id);
-
-        let events = await Event.find()
+		const userId=req.user?._id;
+        let events = await Event.find({ createdBy: userId })  
             .populate("createdBy", "firstName lastName email")
             .populate("invitations", "firstName lastName email avatar");
 

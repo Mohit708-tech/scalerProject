@@ -125,7 +125,7 @@ const CalendarSidebar = (props) => {
     return (
         <div className="sidebar">
             <div className="calendar-page relative">
-                <button className="btn flex items-center  mt-4 add-new-btn"
+                <button className="btn flex items-center  mt-4 "
                         onClick={() => openAddNewEventModal("event")}>
                     <BiPlus className="text-xl text-primary" />
                     <span className="mr-4 font-medium text-sm">New Event</span>
