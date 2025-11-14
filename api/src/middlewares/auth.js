@@ -1,0 +1,23 @@
+const jwt = require("jsonwebtoken");
+
+function auth(req, res, next) {
+	let token = req.headers["authorization"] || ""
+	
+	try {
+		let data = jwt.verify(token, process.env.JWT_SECRET)
+		if (!data) {
+			return res.status(409).json({message: "Please login first"})
+		}
+		req.user = {
+            _id: data._id,
+        }
+		console.log("djbveh",req.user)
+		next()
+		
+	} catch (ex) {
+		return res.status(409).json({message: "Unauthorized"})
+	}
+}
+
+
+module.exports = auth
