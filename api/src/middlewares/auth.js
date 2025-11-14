@@ -13,6 +13,7 @@ function auth(req, res, next) {
             token = token.slice(7, token.length).trim();
         }
 
+        console.log("Verifying token:", token);
         const data = jwt.verify(token, process.env.JWT_SECRET);
 
         if (!data) {

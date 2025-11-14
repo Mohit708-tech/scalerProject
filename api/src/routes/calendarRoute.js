@@ -6,7 +6,7 @@ const {createEvent, getAllEvents, updateEvent} = require("../controllers/calenda
 
 const router = express.Router()
 
-router.get("/events", getAllEvents)
+router.get("/events", auth, getAllEvents)
 router.post("/create", auth, createEvent)
 router.put("/update/:updateId", auth, updateEvent)
 
